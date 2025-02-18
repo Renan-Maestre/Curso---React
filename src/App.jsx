@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import AddTasks from "./componets/AddTasks";
+import Tasks from "./componets/Tasks";
 
-function App() {
-  const [count, setCount] = useState(0)
+function App(){
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+  const [tasks, setTasks] = useState([{
+    id:1,
+    title:"Estudar programação",
+    description:"Estudar programação para se tornar um desenvolvedor full stack.", 
+    iscompleted:false 
+  },
+  {
+    id: 2,
+    title: "Praticar exercícios",
+    description: "Fazer exercícios físicos para manter a saúde.",
+    iscompleted: false
+  },
+  {
+    id: 3,
+    title: "Ler um livro",
+    description: "Ler um livro de ficção científica.",
+    iscompleted: false
+  }])
+
+  return(
+    <div className="w-screen h-screen bg-slate-500 flex justify-center p-6"> 
+      <div className="w-[500px]">
+
+        <h1 className="text-3xl text-slate-100 font-bold text-center">
+          Gerencidor de Tarefas
+        </h1>
+        <AddTasks />
+        <Tasks tasks={tasks}/> 
+        </div>
+
+    </div>
   )
 }
 
-export default App
+export default App;
